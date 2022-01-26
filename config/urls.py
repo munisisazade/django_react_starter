@@ -25,8 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Base Api url prefix
     path('api/v1/', include("api.urls", "api")),
-    # React app
-    re_path(r'^.*$', views.ReactView.as_view(), name='react-app'),
 ]
 
 # Swagger UI documentation Automatic generated
@@ -41,6 +39,11 @@ schema_view = get_schema_view(
 
 urlpatterns += [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+]
+
+urlpatterns += [
+	# React app
+    re_path(r'^.*$', views.ReactView.as_view(), name='react-app'),
 ]
 
 # in development django built-in server serves static and media content
