@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  backend:
+    container_name: django_app
+    build: .
+    restart: "always"
+    # env_file: .env
+    environment:
+      - VIRTUAL_HOST=yourdomainame.com
+      - VIRTUAL_PORT=8000
+      - TIMEOUT=300
+      - HTTP_PORT=8000
+      - STATS_PORT=8001
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
